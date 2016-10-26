@@ -1,6 +1,12 @@
 from flask import Flask
+from sqlalchemy import create_engine
+from database_setup import Base, Category, CategoryItem, User
 
 app = Flask(__name__)
+
+# Connect to Database
+engine = create_engine('sqlite:///itemcatalog.db')
+Base.metadata.bind = engine
 
 @app.route('/')
 @app.route('/catalog')
