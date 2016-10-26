@@ -1,5 +1,6 @@
 from flask import Flask
 from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 from database_setup import Base, Category, CategoryItem, User
 
 app = Flask(__name__)
@@ -7,6 +8,10 @@ app = Flask(__name__)
 # Connect to Database
 engine = create_engine('sqlite:///itemcatalog.db')
 Base.metadata.bind = engine
+
+# Create database session
+DBSession = sessionmaker(bind=engine)
+session = DBSession()
 
 @app.route('/')
 @app.route('/catalog')
