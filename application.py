@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from database_setup import Base, Category, CategoryItem, User
@@ -16,44 +16,44 @@ session = DBSession()
 @app.route('/')
 @app.route('/catalog')
 def showCategories():
-	return "This will show the list of categories."
+	return render_template('categories.html')
 
 @app.route('/catalog/<int:catalog_id>')
 @app.route('/catalog/<int:catalog_id>/items')
 def showCategory(catalog_id):
-	return "This will show the list of items of a category."
+	return render_template('category.html')
 
 @app.route('/catalog/<int:catalog_id>/items/<int:item_id>')
 def showCategoryItem(catalog_id, item_id):
-	return "This will show a single item of a category."
+	return render_template('categoryItem.html')
 
 @app.route('/catalog/add')
 def addCategory():
-	return "This will let you add a category."
+	return render_template('addCategory.html')
 
 @app.route('/catalog/<int:catalog_id>/edit')
 def editCategory(catalog_id):
-	return "This will let you edit a category."
+	return render_template('editCategory.html')
 
 @app.route('/catalog/<int:catalog_id>/delete')
 def deleteCategory(catalog_id):
-	return "This will let you delete a category."
+	return render_template('deleteCategory.html')
 
 @app.route('/catalog/<int:catalog_id>/items/add')
 def addCategoryItem(catalog_id):
-	return "This will let you add a category item."
+	return render_template('addCategoryItem.html')
 
 @app.route('/catalog/<int:catalog_id>/items/<int:item_id>/edit')
 def editCategoryItem(catalog_id, item_id):
-	return "This will let you edit a category item."
+	return render_template('editCategoryItem.html')
 
 @app.route('/catalog/<int:catalog_id>/items/<int:item_id>/delete')
 def deleteCategoryItem(catalog_id, item_id):
-	return "This will let you delete a category item."
+	return render_template('deleteCategoryItem.html')
 
 @app.route('/login')
 def login():
-	return "This will show links to fb and google login."
+	return render_template('login.html')
 
 @app.route('/logout')
 def logout():
