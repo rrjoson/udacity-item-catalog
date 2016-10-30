@@ -1,1 +1,80 @@
 {% extends "base.html" %}
+
+{% block content %}
+
+	<div class="row">
+		<div class="categories column column-25">
+			<div class="categories__list">
+				<h6 class="list__header">
+					<span class="header__title">Categories</span>
+					<span class="header__bar"></span>
+				</h6>
+				<ul class="list__items">
+					<a href="/">
+						<li class="items__item">
+							<span class="item__name">Woodwinds</span>
+						</li>
+					</a>
+					<a href="/">
+						<li class="items__item">
+							<span class="item__name">Strings</span>
+						</li>
+					</a>
+					<a href="/">
+						<li class="items__item">
+							<span class="item__name">Percussion</span>
+						</li>
+					</a>
+					<a href="/">
+						<li class="items__item">
+							<span class="item__name">Brass</span>
+						</li>
+					</a>
+				</ul>
+			</div>
+		</div>
+
+		<div class="latest column column-75">
+			<div class="latest__list">
+				<h6 class="list__header">
+					<span class="header__title">Latest Items</span>
+					<span class="header__bar"></span>
+				</h6>
+				<ul class="list__items">
+					<a href="/">
+						<li class="items__item">
+							<span class="item__name">Violin</span>
+							<span class="item__type">(Strings)</span>
+						</li>
+					</a>
+					<a href="/">
+						<li class="items__item">
+							<span class="item__name">Cello</span>
+							<span class="item__type">(Strings)</span>
+						</li>
+					</a>
+					<a href="/">
+						<li class="items__item">
+							<span class="item__name">Flute</span>
+							<span class="item__type">(Woodwinds)</span>
+						</li>
+					</a>
+					<a href="/">
+						<li class="items__item">
+							<span class="item__name">Trumpet</span>
+							<span class="item__type">(Brass)</span>
+						</li>
+					</a>
+					<a href="/">
+						<li class="items__item">
+							<span class="item__name">Double Bass</span>
+							<span class="item__type">(Strings)</span>
+						</li>
+					</a>
+				</ul>
+				<a href="/" class="button u list__add">Add Item</a>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
