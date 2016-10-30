@@ -90,10 +90,10 @@ ul {
 	text-transform: capitalize;
 }
 
-
 .items__item .item__type {
 	color: #606c76;
 	font-style: italic;
+	text-transform: capitalize;
 }
 
 .latest__list .list__add {
