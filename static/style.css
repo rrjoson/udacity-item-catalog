@@ -86,6 +86,11 @@ ul {
 	width: 5rem;
 }
 
+.items__item .item__name {
+	text-transform: capitalize;
+}
+
+
 .items__item .item__type {
 	color: #606c76;
 	font-style: italic;
