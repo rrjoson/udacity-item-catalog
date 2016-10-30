@@ -16,8 +16,13 @@ session = DBSession()
 @app.route('/')
 @app.route('/catalog')
 def showCategories():
+	# Get all categories
 	categories = session.query(Category).all()
-	return render_template('categories.html', categories = categories)
+
+	# Get lastest 5 category items added
+	categoryItems = session.query(CategoryItem).all()
+
+	return render_template('categories.html', categories = categories, categoryItems = categoryItems)
 
 @app.route('/catalog/<int:catalog_id>')
 @app.route('/catalog/<int:catalog_id>/items')

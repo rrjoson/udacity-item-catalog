@@ -28,36 +28,14 @@
 					<span class="header__bar"></span>
 				</h6>
 				<ul class="list__items">
-					<a href="/">
-						<li class="items__item">
-							<span class="item__name">Violin</span>
-							<span class="item__type">(Strings)</span>
-						</li>
-					</a>
-					<a href="/">
-						<li class="items__item">
-							<span class="item__name">Cello</span>
-							<span class="item__type">(Strings)</span>
-						</li>
-					</a>
-					<a href="/">
-						<li class="items__item">
-							<span class="item__name">Flute</span>
-							<span class="item__type">(Woodwinds)</span>
-						</li>
-					</a>
-					<a href="/">
-						<li class="items__item">
-							<span class="item__name">Trumpet</span>
-							<span class="item__type">(Brass)</span>
-						</li>
-					</a>
-					<a href="/">
-						<li class="items__item">
-							<span class="item__name">Double Bass</span>
-							<span class="item__type">(Strings)</span>
-						</li>
-					</a>
+					{% for categoryItem in categoryItems %}
+						<a href="/">
+							<li class="items__item">
+								<span class="item__name">{{categoryItem.name}}</span>
+								<span class="item__type">({{categoryItem.category.name}})</span>
+							</li>
+						</a>
+					{% endfor %}
 				</ul>
 				<a href="/" class="button u list__add">Add Item</a>
 			</div>
