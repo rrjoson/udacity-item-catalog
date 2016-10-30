@@ -129,3 +129,17 @@ ul {
 	text-transform: uppercase;
 	margin-right: .2rem;
 }
+
+/* Add Category Template */
+
+.category-item__form .form__label {
+	display: inline;
+	font-size: 1.1rem;
+	font-weight: 700;
+	letter-spacing: .1rem;
+	text-transform: uppercase;
+}
+
+.category-item__form .form__textarea {
+	min-height: 30rem;
+}
