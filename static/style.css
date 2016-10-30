@@ -143,3 +143,31 @@ ul {
 .category-item__form .form__textarea {
 	min-height: 30rem;
 }
+
+/* Login Template */
+
+.wrapper .container--login {
+	max-width: 36rem;
+}
+
+.content .container--login {
+	padding: 7.5rem 5rem;
+	margin-top: 20rem;
+	border: .1rem solid #d1d1d1;
+	text-align: center;
+}
+
+.login__button {
+
+}
+
+.login__button--facebook {
+	background: #3B5997;
+	border-color: #3B5997;
+}
+
+.login__button--google {
+	margin-top: 1rem;
+	background: #da4635;
+	border-color: #da4635;
+}
