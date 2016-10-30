@@ -1,1 +1,70 @@
-This will show the list of items of a category for logged in user.
+{% extends "base.html" %}
+
+{% block content %}
+
+	<div class="row">
+		<div class="categories column column-25">
+			<div class="categories__list">
+				<h6 class="list__header">
+					<span class="header__title">Categories</span>
+					<span class="header__bar"></span>
+				</h6>
+				<ul class="list__items">
+					<a href="/">
+						<li class="items__item">
+							<span class="item__name">Woodwinds</span>
+						</li>
+					</a>
+					<a href="/">
+						<li class="items__item">
+							<span class="item__name">Strings</span>
+						</li>
+					</a>
+					<a href="/">
+						<li class="items__item">
+							<span class="item__name">Percussion</span>
+						</li>
+					</a>
+					<a href="/">
+						<li class="items__item">
+							<span class="item__name">Brass</span>
+						</li>
+					</a>
+				</ul>
+			</div>
+		</div>
+
+		<div class="category-items column column-75">
+			<div class="category-items__list">
+				<h6 class="list__header">
+					<span class="header__title">String Instruments (4 Items)</span>
+					<span class="header__bar"></span>
+				</h6>
+				<ul class="list__items">
+					<a href="/">
+						<li class="items__item">
+							<span class="item__name">Violin</span>
+						</li>
+					</a>
+					<a href="/">
+						<li class="items__item">
+							<span class="item__name">Cello</span>
+						</li>
+					</a>
+					<a href="/">
+						<li class="items__item">
+							<span class="item__name">Viola</span>
+						</li>
+					</a>
+					<a href="/">
+						<li class="items__item">
+							<span class="item__name">Double Bass</span>
+						</li>
+					</a>
+				</ul>
+				<!-- <a href="/" class="button u list__add">Add Item</a> -->
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
