@@ -99,3 +99,33 @@ ul {
 }
 
 /* Category Template */
+
+/* Category Item Template */
+
+.category-item__header .header__title {
+	font-weight: 700;
+	margin-bottom: 1rem;
+	display: block;
+}
+
+.category-item__header .header__bar {
+	border-bottom: .5rem solid #9b4dca;
+	height: .1rem;
+	display: block;
+	width: 5rem;
+}
+
+.category-item__description {
+	margin-bottom: 1rem;
+}
+
+.category-item__controls .controls__edit,
+.category-item__controls .controls__delete,
+.category-item__controls .controls__back {
+	display: inline;
+	font-size: 1.1rem;
+	font-weight: 700;
+	letter-spacing: .1rem;
+	text-transform: uppercase;
+	margin-right: .2rem;
+}
