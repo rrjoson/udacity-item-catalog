@@ -1,1 +1,17 @@
-This will let you delete a category item.
+{% extends "base.html" %}
+
+{% block content %}
+
+	<div class="row">
+		<div class="category-item column">
+			<h6 class="category-item__header">
+				<span class="header__title">Delete Instrument</span>
+				<span class="header__bar"></span>
+			</h6>
+			<h5 class="category-item__message">Are you sure you want to delete Violin?</h5>
+			<a href="" class="button button-outline">Back</a>
+			<a href="" class="button">Delete</a>
+		</div>
+	</div>
+
+{% endblock %}
