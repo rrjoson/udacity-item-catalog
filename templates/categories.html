@@ -10,26 +10,13 @@
 					<span class="header__bar"></span>
 				</h6>
 				<ul class="list__items">
-					<a href="/">
-						<li class="items__item">
-							<span class="item__name">Woodwinds</span>
-						</li>
-					</a>
-					<a href="/">
-						<li class="items__item">
-							<span class="item__name">Strings</span>
-						</li>
-					</a>
-					<a href="/">
-						<li class="items__item">
-							<span class="item__name">Percussion</span>
-						</li>
-					</a>
-					<a href="/">
-						<li class="items__item">
-							<span class="item__name">Brass</span>
-						</li>
-					</a>
+					{% for category in categories %}
+						<a href="/">
+							<li class="items__item">
+								<span class="item__name">{{category.name}}</span>
+							</li>
+						</a>
+					{% endfor %}
 				</ul>
 			</div>
 		</div>
