@@ -1,1 +1,31 @@
-This will let you edit a category item.
+{% extends "base.html" %}
+
+{% block content %}
+
+	<div class="row">
+		<div class="category-item column">
+			<h6 class="category-item__header">
+				<span class="header__title">Edit Instrument</span>
+				<span class="header__bar"></span>
+			</h6>
+			<form action="#" method="post" class="category-item__form">
+				<fieldset>
+					<label for="" class="form__label">Name:</label>
+					<input type="text" class="form__input">
+					<label for="" class="form__label">Description:</label>
+					<textarea name="" id="" cols="30" rows="10" class="form__textarea"></textarea>
+					<label for="" class="form__label">Category:</label>
+					<select class="form__select">
+					  <option value="woodwinds">Woodwinds</option>
+					  <option value="strings">Strings</option>
+					  <option value="percussion">Percussion</option>
+					  <option value="brass">Brass</option>
+					</select>
+				</fieldset>
+				<a href="" class="button button-outline">Back</a>
+				<input type="submit" value="Save">
+			</form>
+		</div>
+	</div>
+
+{% endblock %}
