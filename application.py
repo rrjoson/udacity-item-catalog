@@ -100,7 +100,12 @@ def deleteCategoryItem(catalog_id, item_id):
 	# Get category item
 	categoryItem = session.query(CategoryItem).filter_by(id = item_id).first()
 
-	return render_template('deleteCategoryItem.html', categoryItem = categoryItem)
+	if request.method == 'POST':
+		session.delete(categoryItem)
+		session.commit()
+		return redirect(url_for('showCategory', catalog_id = categoryItem.category_id))
+	else:
+		return render_template('deleteCategoryItem.html', categoryItem = categoryItem)
 
 @app.route('/login')
 def login():
