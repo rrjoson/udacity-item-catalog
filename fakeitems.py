@@ -94,6 +94,13 @@ item3 = CategoryItem(name="xylophone", user_id=1, description="The xylophone is 
 session.add(item3)
 session.commit()
 
+# Items for Brass
+category4 = Category(name="brass", user_id=1)
+
+session.add(category4)
+session.commit()
+
+
 categories = session.query(Category).all()
 for category in categories:
     print "Category: " + category.name
