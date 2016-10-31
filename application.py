@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, redirect
+from flask import Flask, render_template, url_for, request, redirect, jsonify
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from database_setup import Base, Category, CategoryItem, User
@@ -133,16 +133,19 @@ def gdisconnect():
 
 @app.route('/catalog/JSON')
 def showCategoriesJSON():
-	return "This will show the list of categories in JSON format."
+	categories = session.query(Category).all()
+	return jsonify(categories = [category.serialize for category in categories])
 
 @app.route('/catalog/<int:catalog_id>/JSON')
 @app.route('/catalog/<int:catalog_id>/items/JSON')
 def showCategoryJSON(catalog_id):
-	return "This will show the list of items of a category in JSON format."
+	categoryItems = session.query(CategoryItem).filter_by(category_id = catalog_id).all()
+	return jsonify(categoryItems = [categoryItem.serialize for categoryItem in categoryItems])
 
 @app.route('/catalog/<int:catalog_id>/items/<int:item_id>/JSON')
 def showCategoryItemJSON(catalog_id, item_id):
-	return "This will show a single item of a category in JSON format."
+	categoryItem = session.query(CategoryItem).filter_by(id = item_id).first()
+	return jsonify(categoryItem = [categoryItem.serialize])
 
 if __name__ == '__main__':
 	app.debug = True
