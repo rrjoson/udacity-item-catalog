@@ -11,15 +11,18 @@
 			<form action="#" method="post" class="category-item__form">
 				<fieldset>
 					<label for="" class="form__label">Name:</label>
-					<input type="text" class="form__input">
+					<input type="text" name="name" value="{{categoryItem.name}}" class="form__input">
 					<label for="" class="form__label">Description:</label>
-					<textarea name="" id="" cols="30" rows="10" class="form__textarea"></textarea>
+					<textarea name="description" id="" cols="30" rows="10" class="form__textarea">{{categoryItem.description}}</textarea>
 					<label for="" class="form__label">Category:</label>
-					<select class="form__select">
-					  <option value="woodwinds">Woodwinds</option>
-					  <option value="strings">Strings</option>
-					  <option value="percussion">Percussion</option>
-					  <option value="brass">Brass</option>
+					<select class="form__select" name="category">
+						{% for category in categories %}
+							{% if categoryItem.category_id == category.id %}
+								<option selected value="{{category.id}}">{{category.name}}</option>
+							{% else %}
+								<option value="{{category.id}}">{{category.name}}</option>
+							{% endif %}
+						{% endfor %}
 					</select>
 				</fieldset>
 				<a href="{{url_for('showCategoryItem', catalog_id = categoryItem.category_id ,item_id = categoryItem.id )}}" class="button button-outline">Back</a>
