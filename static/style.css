@@ -4,6 +4,15 @@ ul {
 	list-style-type: none;
 }
 
+.flash__message {
+	display: block;
+	font-size: 1.1rem;
+	font-weight: 700;
+	letter-spacing: .1rem;
+	text-transform: uppercase;
+	color: #9b4dca;
+}
+
 /* Base Template */
 
 .wrapper .container {
