@@ -12,9 +12,9 @@
 				{{categoryItem.description}}
 			</div>
 			<div class="category-item__controls">
-				<a href="" class="controls__back">Back</a>
-				<a href="" class="controls__edit">Edit</a>
-				<a href="" class="controls__delete">Delete</a>
+				<a href="{{url_for('showCategory', catalog_id = categoryItem.category_id)}}" class="controls__back">Back</a>
+				<a href="{{url_for('editCategoryItem', catalog_id = categoryItem.category_id, item_id = categoryItem.id)}}" class="controls__edit">Edit</a>
+				<a href="{{url_for('deleteCategoryItem', catalog_id = categoryItem.category_id, item_id = categoryItem.id)}}" class="controls__delete">Delete</a>
 			</div>
 		</div>
 	</div>
