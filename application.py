@@ -51,8 +51,8 @@ def showCategoryItem(catalog_id, item_id):
 
 	return render_template('categoryItem.html', categoryItem = categoryItem)
 
-@app.route('/catalog/<int:catalog_id>/items/add')
-def addCategoryItem(catalog_id):
+@app.route('/catalog/add')
+def addCategoryItem():
 	return render_template('addCategoryItem.html')
 
 @app.route('/catalog/<int:catalog_id>/items/<int:item_id>/edit')
