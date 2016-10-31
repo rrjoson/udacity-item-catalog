@@ -30,13 +30,16 @@ def showCategory(catalog_id):
 	# Get all categories
 	categories = session.query(Category).all()
 
+	# Get category
 	category = session.query(Category).filter_by(id = catalog_id).first()
 
+	# Get name of category
 	categoryName = category.name
 
 	# Get all items of a specific category
 	categoryItems = session.query(CategoryItem).filter_by(category_id = catalog_id).all()
 
+	# Get count of category items
 	categoryItemsCount = session.query(CategoryItem).filter_by(category_id = catalog_id).count()
 
 	return render_template('category.html', categories = categories, categoryItems = categoryItems, categoryName = categoryName, categoryItemsCount = categoryItemsCount)
