@@ -112,6 +112,7 @@ ul {
 	font-weight: 700;
 	margin-bottom: 1rem;
 	display: block;
+	text-transform: capitalize;
 }
 
 .category-item__header .header__bar {
