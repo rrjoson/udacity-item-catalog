@@ -52,7 +52,7 @@ item3 = CategoryItem(name="cello", user_id=1, description="The cello is used as 
 session.add(item3)
 session.commit()
 
-# Items for Strings
+# Items for Woodwinds
 category2 = Category(name="woodwinds", user_id=1)
 
 session.add(category2)
@@ -73,7 +73,7 @@ item3 = CategoryItem(name="oboe", user_id=1, description="The oboe is a woodwind
 session.add(item3)
 session.commit()
 
-# Items for Strings
+# Items for Percussion
 category3 = Category(name="percussion", user_id=1)
 
 session.add(category3)
