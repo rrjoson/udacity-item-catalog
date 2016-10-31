@@ -27,7 +27,19 @@ def showCategories():
 @app.route('/catalog/<int:catalog_id>')
 @app.route('/catalog/<int:catalog_id>/items')
 def showCategory(catalog_id):
-	return render_template('category.html')
+	# Get all categories
+	categories = session.query(Category).all()
+
+	category = session.query(Category).filter_by(id = catalog_id).first()
+
+	categoryName = category.name
+
+	# Get all items of a specific category
+	categoryItems = session.query(CategoryItem).filter_by(category_id = catalog_id).all()
+
+	categoryItemsCount = session.query(CategoryItem).filter_by(category_id = catalog_id).count()
+
+	return render_template('category.html', categories = categories, categoryItems = categoryItems, categoryName = categoryName, categoryItemsCount = categoryItemsCount)
 
 @app.route('/catalog/<int:catalog_id>/items/<int:item_id>')
 def showCategoryItem(catalog_id, item_id):
