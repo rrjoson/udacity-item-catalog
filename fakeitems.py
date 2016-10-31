@@ -55,7 +55,7 @@ session.commit()
 # Items for Strings
 category2 = Category(name="woodwinds", user_id=1)
 
-session.add(category1)
+session.add(category2)
 session.commit()
 
 item1 = CategoryItem(name="flute", user_id=1, description="A musical wind instrument consisting of a tube with a series of fingerholes or keys, in which the wind is directed against a sharp edge, either directly, as in the modern transverse flute, or through a flue, as in the recorder. an organ stop with wide flue pipes, having a flutelike tone.", category=category2)
@@ -76,7 +76,7 @@ session.commit()
 # Items for Strings
 category3 = Category(name="percussion", user_id=1)
 
-session.add(category1)
+session.add(category3)
 session.commit()
 
 item1 = CategoryItem(name="marimba", user_id=1, description="The marimba is a percussion instrument consisting of a set of wooden bars struck with mallets to produce musical tones. Resonators suspended underneath the bars amplify their sound. ... This instrument is a type of idiophone, but with a more resonant and lower-pitched tessitura than the xylophone.", category=category3)
