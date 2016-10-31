@@ -11,7 +11,7 @@
 				</h6>
 				<ul class="list__items">
 					{% for category in categories %}
-						<a href="/">
+						<a href="{{url_for('showCategory', catalog_id = category.id )}}">
 							<li class="items__item">
 								<span class="item__name">{{category.name}}</span>
 							</li>
@@ -29,7 +29,7 @@
 				</h6>
 				<ul class="list__items">
 					{% for categoryItem in categoryItems %}
-						<a href="/">
+						<a href="{{url_for('showCategoryItem', catalog_id = categoryItem.category_id ,item_id = categoryItem.id )}}">
 							<li class="items__item">
 								<span class="item__name">{{categoryItem.name}}</span>
 								<span class="item__type">({{categoryItem.category.name}})</span>
