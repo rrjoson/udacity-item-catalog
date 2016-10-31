@@ -53,6 +53,8 @@ def showCategoryItem(catalog_id, item_id):
 
 @app.route('/catalog/add', methods=['GET', 'POST'])
 def addCategoryItem():
+	# Check if user is logged in
+
 	if request.method == 'POST':
 		# Add category item
 		newCategoryItem = CategoryItem(name = request.form['name'], description = request.form['description'], category_id = request.form['category'], user_id = 1)
@@ -68,6 +70,10 @@ def addCategoryItem():
 
 @app.route('/catalog/<int:catalog_id>/items/<int:item_id>/edit', methods=['GET', 'POST'])
 def editCategoryItem(catalog_id, item_id):
+	# Check if user is logged in
+
+	# Check if logged in user is creator of category item
+
 	# Get category item
 	categoryItem = session.query(CategoryItem).filter_by(id = item_id).first()
 
@@ -75,6 +81,10 @@ def editCategoryItem(catalog_id, item_id):
 
 @app.route('/catalog/<int:catalog_id>/items/<int:item_id>/delete', methods=['GET', 'POST'])
 def deleteCategoryItem(catalog_id, item_id):
+	# Check if user is logged in
+
+	# Check if logged in user is creator of category item
+
 	# Get category item
 	categoryItem = session.query(CategoryItem).filter_by(id = item_id).first()
 
