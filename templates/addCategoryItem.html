@@ -11,15 +11,14 @@
 			<form action="#" method="post" class="category-item__form">
 				<fieldset>
 					<label for="" class="form__label">Name:</label>
-					<input type="text" class="form__input">
+					<input type="text" name="name" class="form__input">
 					<label for="" class="form__label">Description:</label>
-					<textarea name="" id="" cols="30" rows="10" class="form__textarea"></textarea>
+					<textarea name="description" id="" cols="30" rows="10" class="form__textarea"></textarea>
 					<label for="" class="form__label">Category:</label>
-					<select class="form__select">
-					  <option value="woodwinds">Woodwinds</option>
-					  <option value="strings">Strings</option>
-					  <option value="percussion">Percussion</option>
-					  <option value="brass">Brass</option>
+					<select class="form__select" name="category">
+						{% for category in categories %}
+							<option value="{{category.id}}">{{category.name}}</option>
+						{% endfor %}
 					</select>
 				</fieldset>
 				<input type="submit" value="add instrument">

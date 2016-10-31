@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, request, redirect
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from database_setup import Base, Category, CategoryItem, User
@@ -53,7 +53,18 @@ def showCategoryItem(catalog_id, item_id):
 
 @app.route('/catalog/add', methods=['GET', 'POST'])
 def addCategoryItem():
-	return render_template('addCategoryItem.html')
+	if request.method == 'POST':
+		# Add category item
+		newCategoryItem = CategoryItem(name = request.form['name'], description = request.form['description'], category_id = request.form['category'], user_id = 1)
+		session.add(newCategoryItem)
+		session.commit()
+
+		return redirect(url_for('showCategories'))
+	else:
+		# Get all categories
+		categories = session.query(Category).all()
+
+		return render_template('addCategoryItem.html', categories = categories)
 
 @app.route('/catalog/<int:catalog_id>/items/<int:item_id>/edit', methods=['GET', 'POST'])
 def editCategoryItem(catalog_id, item_id):
