@@ -46,6 +46,7 @@ def showCategory(catalog_id):
 
 @app.route('/catalog/<int:catalog_id>/items/<int:item_id>')
 def showCategoryItem(catalog_id, item_id):
+	# Get category item
 	categoryItem = session.query(CategoryItem).filter_by(id = item_id).first()
 
 	return render_template('categoryItem.html', categoryItem = categoryItem)
