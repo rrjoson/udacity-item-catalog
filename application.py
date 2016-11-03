@@ -3,7 +3,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from database_setup import Base, Category, CategoryItem, User
 from flask import session as login_session
-import random, string
+import random, string, json, httplib2
 
 app = Flask(__name__)
 
@@ -14,6 +14,27 @@ Base.metadata.bind = engine
 # Create database session
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
+
+# User Helper Functions
+def createUser(login_session):
+    newUser = User(name=login_session['username'], email=login_session['email'], picture=login_session['picture'])
+    session.add(newUser)
+    session.commit()
+    user = session.query(User).filter_by(email=login_session['email']).one()
+    return user.id
+
+
+def getUserInfo(user_id):
+    user = session.query(User).filter_by(id=user_id).one()
+    return user
+
+
+def getUserID(email):
+    try:
+        user = session.query(User).filter_by(email=email).one()
+        return user.id
+    except:
+        return None
 
 @app.route('/')
 @app.route('/catalog')
@@ -129,7 +150,53 @@ def fbconnect():
 	    response.headers['Content-Type'] = 'application/json'
 	    return response
 
-	return "This will log you in. (Facebook)"
+	# Gets acces token
+	access_token = request.data
+	print "access token received %s " % access_token
+
+	# Gets info from fb clients secrets
+	app_id = json.loads(open('fb_client_secrets.json', 'r').read())['web']['app_id']
+	app_secret = json.loads(open('fb_client_secrets.json', 'r').read())['web']['app_secret']
+
+	url = 'https://graph.facebook.com/oauth/access_token?grant_type=fb_exchange_token&client_id=%s&client_secret=%s&fb_exchange_token=%s' % (app_id, app_secret, access_token)
+	h = httplib2.Http()
+	result = h.request(url, 'GET')[1]
+
+	# Use token to get user info from API
+	userinfo_url = "https://graph.facebook.com/v2.4/me"
+
+    # strip expire tag from access token
+	token = result.split("&")[0]
+
+	url = 'https://graph.facebook.com/v2.4/me?%s&fields=name,id,email' % token
+	h = httplib2.Http()
+	result = h.request(url, 'GET')[1]
+
+	data = json.loads(result)
+	login_session['provider'] = 'facebook'
+	login_session['username'] = data["name"]
+	login_session['email'] = data["email"]
+	login_session['facebook_id'] = data["id"]
+
+	# Store token in login_session in order to logout
+	stored_token = token.split("=")[1]
+	login_session['access_token'] = stored_token
+
+	# Get user picture
+	url = 'https://graph.facebook.com/v2.4/me/picture?%s&redirect=0&height=200&width=200' % token
+	h = httplib2.Http()
+	result = h.request(url, 'GET')[1]
+	data = json.loads(result)
+
+	login_session['picture'] = data["data"]["url"]
+
+	# See if user exists
+	user_id = getUserID(login_session['email'])
+	if not user_id:
+	    user_id = createUser(login_session)
+	login_session['user_id'] = user_id
+
+	return "Login Successful!"
 
 @app.route('/fbdisconnect')
 def fbdisconnect():
