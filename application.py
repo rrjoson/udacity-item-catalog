@@ -123,7 +123,12 @@ def logout():
 
 @app.route('/fbconnect', methods=['POST'])
 def fbconnect():
-	print request.args.get('state')
+	# Validate anti-forgery state token
+	if request.args.get('state') != login_session['state']:
+	    response = make_response(json.dumps('Invalid state parameter.'), 401)
+	    response.headers['Content-Type'] = 'application/json'
+	    return response
+
 	return "This will log you in. (Facebook)"
 
 @app.route('/fbdisconnect')
@@ -132,7 +137,12 @@ def fbdisconnect():
 
 @app.route('/gconnect', methods=['POST'])
 def gconnect():
-	print request.args.get('state')
+	# Validate anti-forgery state token
+	if request.args.get('state') != login_session['state']:
+	    response = make_response(json.dumps('Invalid state parameter.'), 401)
+	    response.headers['Content-Type'] = 'application/json'
+	    return response
+
 	return "This will log you in. (Google)"
 
 @app.route('/gdicconnect')
