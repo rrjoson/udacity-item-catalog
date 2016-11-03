@@ -140,7 +140,18 @@ def login():
 
 @app.route('/logout')
 def logout():
-	return "This will log you out and redirect you to the catalog page."
+	if login_session['provider'] == 'facebook':
+		fbdisconnect()
+		del login_session['facebook_id']
+
+	del login_session['username']
+	del login_session['email']
+	del login_session['picture']
+	del login_session['user_id']
+	del login_session['provider']
+
+	return redirect(url_for('showCategories'))
+
 
 @app.route('/fbconnect', methods=['POST'])
 def fbconnect():
@@ -200,7 +211,14 @@ def fbconnect():
 
 @app.route('/fbdisconnect')
 def fbdisconnect():
-	return "This will log you out. (Facebook)"
+	facebook_id = login_session['facebook_id']
+	access_token = login_session['access_token']
+
+	url = 'https://graph.facebook.com/%s/permissions?access_token=%s' % (facebook_id,access_token)
+	h = httplib2.Http()
+	result = h.request(url, 'DELETE')[1]
+
+	return "you have been logged out"
 
 @app.route('/gconnect', methods=['POST'])
 def gconnect():
