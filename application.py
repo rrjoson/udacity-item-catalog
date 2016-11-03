@@ -115,7 +115,7 @@ def login():
 def logout():
 	return "This will log you out and redirect you to the catalog page."
 
-@app.route('/fbconnect')
+@app.route('/fbconnect', methods=['POST'])
 def fbconnect():
 	return "This will log you in. (Facebook)"
 
@@ -123,7 +123,7 @@ def fbconnect():
 def fbdisconnect():
 	return "This will log you out. (Facebook)"
 
-@app.route('/gconnect')
+@app.route('/gconnect', methods=['POST'])
 def gconnect():
 	return "This will log you in. (Google)"
 
