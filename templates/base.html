@@ -19,9 +19,15 @@
 					<h1 class="title__text">Udacity Item Catalog</h1>
 				</a>
 				<div class="header__user">
+					{%if 'username' not in session %}
 					<a href="{{url_for('login')}}" class="user__nav">
 						Login
 					</a>
+					{% else %}
+					<a href="{{url_for('logout')}}" class="user__nav">
+						Logout
+					</a>
+					{% endif %}
 				</div>
 			</div>
 		</header>
