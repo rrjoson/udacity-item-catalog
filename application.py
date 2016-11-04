@@ -75,7 +75,10 @@ def showCategoryItem(catalog_id, item_id):
 	# Get category item
 	categoryItem = session.query(CategoryItem).filter_by(id = item_id).first()
 
-	return render_template('categoryItem.html', categoryItem = categoryItem)
+	# Get creator of item
+	creator = getUserInfo(categoryItem.user_id)
+
+	return render_template('categoryItem.html', categoryItem = categoryItem, creator = creator)
 
 @app.route('/catalog/add', methods=['GET', 'POST'])
 def addCategoryItem():
