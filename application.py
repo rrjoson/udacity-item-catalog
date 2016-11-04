@@ -87,6 +87,8 @@ def addCategoryItem():
 	    return redirect('/login')
 
 	if request.method == 'POST':
+		# TODO: Retain data when there is an error
+
 		if not request.form['name']:
 			flash('Please add instrument name')
 			return redirect(url_for('addCategoryItem'))
