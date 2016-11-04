@@ -88,7 +88,7 @@ def addCategoryItem():
 
 	if request.method == 'POST':
 		# Add category item
-		newCategoryItem = CategoryItem(name = request.form['name'], description = request.form['description'], category_id = request.form['category'], user_id = 1)
+		newCategoryItem = CategoryItem(name = request.form['name'], description = request.form['description'], category_id = request.form['category'], user_id = login_session['user_id'])
 		session.add(newCategoryItem)
 		session.commit()
 
