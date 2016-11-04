@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, redirect, jsonify, make_response
+from flask import Flask, render_template, url_for, request, redirect, jsonify, make_response, flash
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from database_setup import Base, Category, CategoryItem, User
@@ -87,6 +87,14 @@ def addCategoryItem():
 	    return redirect('/login')
 
 	if request.method == 'POST':
+		if not request.form['name']:
+			flash('Please add instrument name')
+			return redirect(url_for('addCategoryItem'))
+
+		if not request.form['description']:
+			flash('Please add a description')
+			return redirect(url_for('addCategoryItem'))
+
 		# Add category item
 		newCategoryItem = CategoryItem(name = request.form['name'], description = request.form['description'], category_id = request.form['category'], user_id = login_session['user_id'])
 		session.add(newCategoryItem)

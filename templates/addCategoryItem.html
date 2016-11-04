@@ -22,7 +22,13 @@
 					</select>
 				</fieldset>
 				<input type="submit" value="add instrument">
-				<p class="flash__message">This is a flash message.</p>
+				{% with messages = get_flashed_messages() %}
+					{% if messages %}
+						{% for message in messages %}
+							 <p class="flash__message">{{ message }}</p>
+						{% endfor %}
+					{% endif %}
+				{% endwith %}
 			</form>
 		</div>
 	</div>
