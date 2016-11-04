@@ -115,10 +115,15 @@ def editCategoryItem(catalog_id, item_id):
 	if 'username' not in login_session:
 	    return redirect('/login')
 
-	# Check if logged in user is creator of category item
-
 	# Get category item
 	categoryItem = session.query(CategoryItem).filter_by(id = item_id).first()
+
+	# Get creator of item
+	creator = getUserInfo(categoryItem.user_id)
+
+	# Check if logged in user is creator of category item
+	if creator.id != login_session['user_id']:
+		return redirect('/login')
 
 	# Get all categories
 	categories = session.query(Category).all()
