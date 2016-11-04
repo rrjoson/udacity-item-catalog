@@ -37,7 +37,10 @@
 						</a>
 					{% endfor %}
 				</ul>
-				<a href="{{url_for('addCategoryItem')}}" class="button u list__add">Add Item</a>
+
+				{% if 'username' in session %}
+					<a href="{{url_for('addCategoryItem')}}" class="button u list__add">Add Item</a>
+				{% endif %}
 			</div>
 		</div>
 	</div>
