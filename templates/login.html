@@ -31,11 +31,12 @@
 					success: function(result) {
 			        	// Handle or verify the server response if necessary.
 				        if (result) {
+				        	$('#login').html('Logging in...')
 							window.location.href = "/catalog";
 						} else if (authResult['error']) {
 							console.log('There was an error: ' + authResult['error']);
 						} else {
-							$('#result').html('Failed to make a server-side call. Check your configuration and console.');
+							$('#login').html('Failed to make a server-side call. Check your configuration and console.');
 						}
 					}
 				});
@@ -80,9 +81,10 @@
 					success: function(result) {
 						// Handle or verify the server response if necessary.
 						if (result) {
+							$('#login').html('Logging in...')
 							window.location.href = "/catalog";
 						} else {
-							$('#result').html('Failed to make a server-side call. Check your configuration and console.');
+							$('#login').html('Failed to make a server-side call. Check your configuration and console.');
 						}
 					}
 				});
@@ -110,11 +112,13 @@
 			</div>
 		</header>
 		<div class="content">
-			<div class="container container--login">
+			<div id="login" class="container container--login">
 				<fb:login-button size="large" scope="public_profile,email" onlogin="sendTokenToServer();">
 					<a href='javascript:sendTokenToServer()'>Login with Facebook</a>
 				</fb:login-button>
+
 				<!-- <button class="login__button login__button--facebook">Login with Facebook</button> -->
+
 				<div class="login__separator">OR</div>
 
 				<div id="signInButton">
@@ -128,8 +132,6 @@
 						data-approvalprompt="force">
 					</span>
 				</div>
-
-				<div id="result"></div>
 
 				<!-- <button class="login__button login__button--google">Login with Google</button> -->
 			</div>
